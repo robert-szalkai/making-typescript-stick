@@ -113,7 +113,7 @@ test("`$.ajax test", async () => {
     },
   });
 
-  expect(result).toBeTruthy();
+  // expect(result).toBeTruthy();
   expect(JSON.stringify(result)).toBe(
     '{"userId":4,"id":33,"title":"qui explicabo molestiae dolorem","body":"rerum ut et numquam laborum odit est sit\\nid qui sint in\\nquasi tenetur tempore aperiam et quaerat qui in\\nrerum officiis sequi cumque quod"}'
   );
