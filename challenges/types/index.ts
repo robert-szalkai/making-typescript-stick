@@ -159,3 +159,19 @@ type isTupleCases = [
   Expect<Equal<IsTuple<{ length: 1 }>, false>>,
   Expect<Equal<IsTuple<number[]>, false>>
 ];
+
+// IndexOf<T, U>
+// Implement the type version of Array.indexOf, IndexOf<T, U> takes an Array T, any U and returns the index of the first U in Array T
+type IndexOf<T extends any[], U, Acc extends any[] = []> = T[0] extends U
+  ? Acc["length"]
+  : T extends [infer F, ...infer Rest]
+  ? IndexOf<Rest, U, [...Acc, F]>
+  : -1;
+
+// Tests
+
+type indexOfCases = [
+  Expect<Equal<IndexOf<[1, 2, 3], 2>, 1>>,
+  Expect<Equal<IndexOf<[2, 6, 3, 8, 4, 1, 7, 3, 9], 3>, 2>>,
+  Expect<Equal<IndexOf<[0, 0, 0], 2>, -1>>
+];
